@@ -11,7 +11,7 @@ src/test/java->pgrm3(package)->LoginValidatorTest(class)
 
 pom.xml (refer mvn repository)->testNG 
 
-check maven --version
+check mavan --version
       gradle --version
       java --version
 
