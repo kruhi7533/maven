@@ -1,0 +1,117 @@
+-----src/main/java ->pgrm1->Result.java---------------
+
+package pgrm1;
+public class Result {
+    public static String display(int m) {
+        if (m < 0 || m > 100)
+            return "invalid";
+        else if (m < 40)
+            return "fail";
+        else
+            return "pass";
+    }
+    public static void main(String[] args) {
+        System.out.println(display(55));
+    }
+}
+
+-----src/main/java ->pgrm3->LoginValidator.java---------------
+
+package pgrm3;
+public class LoginValidator {
+    public static String validate(String username, String password) {
+        if (username == null || password == null)
+            return "Invalid Input";
+        if (username.equals("admin") && password.equals("admin123"))
+            return "Login Successful";
+        else
+            return "Login Failed";
+    }
+    public static void main(String[] args) {
+        System.out.println(validate("admin", "admin123"));
+    }
+}
+
+-----src/test/java ->pgrm1->ResultTest.java---------------
+package pgrm1;
+import org.testng.Assert;
+import org.testng.annotations.Test;
+public class ResultTest {
+    @Test
+    public void testPass() {
+        Assert.assertEquals(Result.display(55), "pass");
+    }
+    @Test
+    public void testFail() {
+        Assert.assertEquals(Result.display(35), "fail");
+    }
+    @Test
+    public void testInvalid() {
+        Assert.assertEquals(Result.display(-5), "invalid");
+    }
+}
+
+
+
+
+-----src/main/java ->pgrm3->LoginValidatorTest.java---------------
+
+package pgrm3;
+import org.testng.Assert;
+import org.testng.annotations.Test;
+public class LoginValidatorTest {
+    @Test
+    public void testValidLogin() {
+        Assert.assertEquals(
+            LoginValidator.validate("admin", "admin123"),
+            "Login Successful"
+        );
+    }
+    @Test
+    public void testWrongPassword() {
+        Assert.assertEquals(
+            LoginValidator.validate("admin", "wrongpass"),
+            "Login Failed"
+        );
+    }
+    @Test
+    public void testWrongUsername() {
+        Assert.assertEquals(
+            LoginValidator.validate("user", "admin123"),
+            "Login Failed"
+        );
+    }
+    @Test
+    public void testNullUsername() {
+        Assert.assertEquals(
+            LoginValidator.validate(null, "admin123"),
+            "Invalid Input"
+        );
+    }
+    @Test
+    public void testNullPassword() {
+        Assert.assertEquals(
+            LoginValidator.validate("admin", null),
+            "Invalid Input"
+        );
+    }
+}
+
+
+---------------------------pom.xml---------------------
+
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+  <groupId>com.dsce</groupId>
+  <artifactId>Resultapp</artifactId>
+  <dependencies>
+  <!-- Source: https://mvnrepository.com/artifact/org.testng/testng -->
+	<dependency>
+	    <groupId>org.testng</groupId>
+	    <artifactId>testng</artifactId>
+	    <version>7.12.0</version>
+	    <scope>test</scope>
+	</dependency>
+</dependencies>
+  <version>0.0.1-SNAPSHOT</version>
+</project>
