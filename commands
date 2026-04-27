@@ -19,8 +19,8 @@ check mavan --version
 terminal command 
 cd (get it from properties)
 mvn clean compile
-java cp target/classes pgrm1.Result
-java cp target/classes pgrm3.LoginValidator
+java -cp target/classes pgrm1.Result
+java -cp target/classes pgrm3.LoginValidator
 mvn test
 gradle init
 gradle build
