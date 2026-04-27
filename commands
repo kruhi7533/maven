@@ -1,0 +1,28 @@
+file->new->mavenproject
+check simple project
+groupid-:com.example
+artifactid:resultapp
+
+src/main/java ->pgrm1(package)->Result.java(class)
+src/main/java->pgrm2(package)->LoginValidator(class)
+
+src/test/java ->pgrm1(package)->ResultTest.ajav(class)
+src/test/java->pgrm3(package)->LoginValidatorTest(class)
+
+pom.xml (refer mvn repository)->testNG 
+
+check maven --version
+      gradle --version
+      java --version
+
+
+terminal command 
+cd (get it from properties)
+mvn clean compile
+java cp target/classes pgrm1.Result
+java cp target/classes pgrm3.LoginValidator
+mvn test
+gradle init
+gradle build
+
+
